@@ -1,21 +1,19 @@
 /*
  * CONFIGURACIÓN CENTRALIZADA DE API
- * Para producción: Comentar la línea de desarrollo y descomentar la de producción.
- * Opcional: Se incluye auto-detección para evitar cambios manuales.
+ * Las variables de entorno se inyectan automáticamente desde:
+ * - .env.development (cuando ejecutas: npm run dev)
+ * - .env.production (cuando ejecutas: npm run build)
  */
 
-// 1. URL de PRODUCCIÓN (Cambiar por tu dominio real si es diferente al origen)
-const PROD_URL = window.location.origin;
+// URL base del API backend (se obtiene de las variables de entorno)
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
 
-// 2. URL de DESARROLLO
-const DEV_URL = 'http://localhost:3001';
+// URL de la API de QR (se obtiene de las variables de entorno)
+export const API_QR =
+  import.meta.env.VITE_API_QR ||
+  "https://apis.siamsoft.gobiernodigitalperu.com";
 
-// 3. SELECCIÓN AUTOMÁTICA O MANUAL
-// Para forzar una URL, simplemente asigna el valor directamente a API_BASE_URL
-export const API_BASE_URL = window.location.hostname === 'localhost'
-    ? DEV_URL
-    : PROD_URL;
-
-// Configuración de API de QR (generalmente es la misma en todos los entornos)
-export const API_QR = import.meta.env.VITE_API_QR ||
-    'https://apis.siamsoft.gobiernodigitalperu.com';
+// Modo de desarrollo (útil para debugging)
+export const IS_DEV = import.meta.env.DEV;
+export const IS_PROD = import.meta.env.PROD;
