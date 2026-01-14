@@ -36,7 +36,7 @@ jobs:
           username: notarios-app@siamsoftnotarios.com
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: /siamsoftnotarios.com/public_html/
+          server-dir: /siamsoftnotarios.com/
           dangerous-clean-slate: false
 
       - name: Deployment successful
