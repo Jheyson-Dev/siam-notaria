@@ -1,4 +1,4 @@
-name: Deploy notarias-app to Yachay FTP
+name: Deploy notarias-app to Yachay FTP v2
 
 on:
   push:
