@@ -36,7 +36,9 @@ jobs:
           username: notarios-app@siamsoftnotarios.com
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: /siamsoftnotarios.com/
+          # Use the FTP user's home directory as the base (relative path).
+          # Using './' avoids changing to a parent path the FTP server may block.
+          server-dir: ./
           dangerous-clean-slate: false
 
       - name: Deployment successful
